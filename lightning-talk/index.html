@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Design on Oscilloscope</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    Congress Design on an Oscilloscope
+                    <img data-src="start.png">
+				</section>
+				<section>
+				What do we have?
+                    <img data-src="original.png">
+				</section>
+				<section>
+                    <h2>What do I want?</h2>
+                    This design as an vector graphics on a phosphor layer.
+				</section>
+				<section>
+                    <h2>What do I need for that?</h2>
+                    <ul>
+                        <li>The dath data in XY samples</li>
+                        <li>Something to convert it into analoge values</li>
+                    </ul>
+				</section>
+				<section>
+                    <h2>PaperJS is our friend</h2>
+                    <br>
+                    <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape data-line-numbers="2">
+for (let offset = 0; offset < path.length; offset += delta) {
+    const point = path.getLocationAt(offset).point;
+    x_path.push(point.x);
+    y_path.push(point.y);
+}
+	</code></pre>
+                    Calculates the point on the path at the given offset.
+				</section>
+				<section>
+                    <h2>The Audio Part</h2>
+                    <p>DTPIL: There is a full featured WebAudioAPI <a style="color:blue;">O.o</a></p>
+                    <ul>
+                        <li>modular routing</li>
+                        <li>input/output nodes</li>
+                        <li>effect nodes</li>
+                    </ul>
+                    <p>So you can use your browser to mix music, while it is mining bitcoins.</p>
+                    <small>DTPIL = During This Project I Learned</small>
+                </section>
+				<section>
+                    <h2>The Audio Part 2</h2>
+                    Just use there arrays and play them.
+                    <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape>
+const aBuf = aCTX.createBuffer(2, 88200, audioCtx.sampleRate);
+aBuf.copyToChannel(x_path,0);
+aBuf.copyToChannel(y_path,1);
+</code></pre>
+(Maybe do some normalisation, scaling)
+				</section>
+				<section>
+                    <h4>Longer talk:</h4>
+                    <ul>
+                        <li>in german</li>
+                        <li>today 19:45</li>
+                        <li>ChaosZone Stage</li>
+                        <li>not recorded, come around!</li>
+                        <li>more background, details and outlook</li>
+                    </ul>
+                    <h4>Ask me:</h4>
+                    <ul>
+                        <li>quanten at ChaosZone</li>
+                        <li>Twitter: @quintusquanten</li>
+                        <li>DECT 6626</li>
+                        <li>36C3 Wiki Project</li>
+                    </ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
