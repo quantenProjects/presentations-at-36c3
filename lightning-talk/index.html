@@ -1,50 +1,50 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Design on Oscilloscope</title>
+        <title>Design on Oscilloscope</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
                     Congress Design on an Oscilloscope
                     <img data-src="start.png">
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>What do we have?</h2>
                     <img data-src="original.png">
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>What do I want?</h2>
                     This design as a vector graphics on a phosphor layer.
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>What do I need for that?</h2>
                     <ul>
                         <li>The path data in XY samples</li>
                         <li>Something to convert it into analoge values</li>
                     </ul>
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>PaperJS is our friend</h2>
                     <br>
                     <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape data-line-numbers="2">
@@ -53,10 +53,10 @@ for (let offset = 0; offset < path.length; offset += delta) {
     x_path.push(point.x);
     y_path.push(point.y);
 }
-	</code></pre>
+    </code></pre>
                     Calculates the point on the path at the given offset.
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>The Audio Part</h2>
                     <p>DTPIL: There is a full featured WebAudioAPI <a style="color:blue;">o.O</a></p>
                     <ul>
@@ -67,7 +67,7 @@ for (let offset = 0; offset < path.length; offset += delta) {
                     <p>So you can use your browser to mix music,<br> while it is mining bitcoins.</p>
                     <small>DTPIL = During This Project I Learned</small>
                 </section>
-				<section>
+                <section>
                     <h2>The Audio Part 2</h2>
                     Just use these arrays and play them.
                     <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape>
@@ -76,15 +76,15 @@ aBuf.copyToChannel(x_path,0);
 aBuf.copyToChannel(y_path,1);
 </code></pre>
 (Maybe some normalisation, scaling)
-				</section>
-				<section>
+                </section>
+                <section>
                     <h2>Result</h2>
                     missing image...
-				</section>
-				<section>
-				<ul>
-				<h3>Longer talk</h3>
-				
+                </section>
+                <section>
+                <ul>
+                <h3>Longer talk</h3>
+                
                     <ul>
                         <li>in german</li>
                         <li>today 19:45</li>
@@ -100,29 +100,29 @@ aBuf.copyToChannel(y_path,1);
                         <li>36C3 Wiki Project</li>
                     </ul>
                 </ul>
-				</section>
-			</div>
-		</div>
+                </section>
+            </div>
+        </div>
 
-		<script src="js/reveal.js"></script>
+        <script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
                 controls: false,
                 hash: true,
                 center:false,
                 transition: 'none',
                 progress: false,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true }
+                ]
+            });
+        </script>
+    </body>
 </html>
