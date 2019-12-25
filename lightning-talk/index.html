@@ -30,17 +30,17 @@
                     <img data-src="start.png">
 				</section>
 				<section>
-				What do we have?
+                    <h2>What do we have?</h2>
                     <img data-src="original.png">
 				</section>
 				<section>
                     <h2>What do I want?</h2>
-                    This design as an vector graphics on a phosphor layer.
+                    This design as a vector graphics on a phosphor layer.
 				</section>
 				<section>
                     <h2>What do I need for that?</h2>
                     <ul>
-                        <li>The dath data in XY samples</li>
+                        <li>The path data in XY samples</li>
                         <li>Something to convert it into analoge values</li>
                     </ul>
 				</section>
@@ -58,27 +58,33 @@ for (let offset = 0; offset < path.length; offset += delta) {
 				</section>
 				<section>
                     <h2>The Audio Part</h2>
-                    <p>DTPIL: There is a full featured WebAudioAPI <a style="color:blue;">O.o</a></p>
+                    <p>DTPIL: There is a full featured WebAudioAPI <a style="color:blue;">o.O</a></p>
                     <ul>
                         <li>modular routing</li>
                         <li>input/output nodes</li>
                         <li>effect nodes</li>
                     </ul>
-                    <p>So you can use your browser to mix music, while it is mining bitcoins.</p>
+                    <p>So you can use your browser to mix music,<br> while it is mining bitcoins.</p>
                     <small>DTPIL = During This Project I Learned</small>
                 </section>
 				<section>
                     <h2>The Audio Part 2</h2>
-                    Just use there arrays and play them.
+                    Just use these arrays and play them.
                     <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape>
 const aBuf = aCTX.createBuffer(2, 88200, audioCtx.sampleRate);
 aBuf.copyToChannel(x_path,0);
 aBuf.copyToChannel(y_path,1);
 </code></pre>
-(Maybe do some normalisation, scaling)
+(Maybe some normalisation, scaling)
 				</section>
 				<section>
-                    <h4>Longer talk:</h4>
+                    <h2>Result</h2>
+                    missing image...
+				</section>
+				<section>
+				<ul>
+				<h3>Longer talk</h3>
+				
                     <ul>
                         <li>in german</li>
                         <li>today 19:45</li>
@@ -86,13 +92,14 @@ aBuf.copyToChannel(y_path,1);
                         <li>not recorded, come around!</li>
                         <li>more background, details and outlook</li>
                     </ul>
-                    <h4>Ask me:</h4>
+                    <h3>Ask me:</h3>
                     <ul>
                         <li>quanten at ChaosZone</li>
                         <li>Twitter: @quintusquanten</li>
                         <li>DECT 6626</li>
                         <li>36C3 Wiki Project</li>
                     </ul>
+                </ul>
 				</section>
 			</div>
 		</div>
@@ -104,6 +111,11 @@ aBuf.copyToChannel(y_path,1);
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+                controls: false,
+                hash: true,
+                center:false,
+                transition: 'none',
+                progress: false,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
