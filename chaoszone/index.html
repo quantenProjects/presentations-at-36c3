@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Design on Oscilloscope</title>
+
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-image="res/start.png">
+		<h2>Browsers on Phosphor</h2>
+		<p>Wie ich Bleepstrack's 36C3 Designgenerator auf ein Oszilloskop gebracht habe.</p>
+		<p>Eine kurze Reise von Vektorgrafiken in JS, über die Web Audio API bis zum XY-Modus eines Oszilloskops.</p>
+                </section>
+                <section>
+                    <h2>Reiseplan</h2>
+		    <ul>
+			    <li>Departure 1958 - Tennis for two</li>
+			    <li>Wie funktioniert ein Oszilloskop?</li>
+			    <li>Zeichnen auf einem Oszilloskop</li>
+			    <li>Wie geht das mit JavaScript</li>
+			    <li>Prior Art</li>
+			    <li>Arrival 2019</li>
+		   </ul>
+                </section>
+                <section>
+                    <h2>Tennis for Two</h2>
+		    <p>Das wahrscheinlich erste grafische "Computerspiel"</p>
+		    <img width="900" data-src="res/tennis-for-two.gif">
+		    <p><small>Source: https://cheezburger.com/6770557696</small></p>
+                </section>
+                <section>
+                    <h2>Tennis for Two</h2>
+		    <img data-src="res/tennis-for-two-overview.png" width="1500">
+		    <p><small>Source: https://commons.wikimedia.org/wiki/File:Tennis_For_Two_re-created_in_1997.png</small></p>
+                </section>
+		<section>
+			<h2>Oszilloskop</h2>
+			<img data-src="res/cathode_ray_tube.png" width="1500">
+			<p><small>Source: https://commons.wikimedia.org/wiki/File:Cathode_ray_Tube.PNG</small></p>
+                </section>
+		<section>
+			<h2>Demo Time</h2>
+		</section>
+		<section>
+			<h2>Wie werden aus Buchstaben diese Vektorpfade?</h2>
+			<img data-src="res/path_example.png">
+		</section>
+                <section>
+                    <h2>PaperJS is our friend</h2>
+                    <br>
+		    <pre style="font-size:150%"><code style="max-height: max-content;" class="javascript hljs" data-trim data-noescape data-line-numbers="3">
+for (let offset = 0; offset < path.length;
+                                        offset += delta) {
+    const point = path.getLocationAt(offset).point;
+    x_path.push(point.x);
+    y_path.push(point.y);
+}
+    </code></pre>
+                    Berechnet die Punkte entlang des Pfades.
+                </section>
+                <section>
+                    <h2>Wie bekommt man die Pfade aus dem Rechner?</h2>
+                    <p>Es gibt eine funktionsreiche WebAudioAPI <a style="color:blue;">o.O</a></p>
+                    <ul>
+                        <li>Modulares Routing</li>
+                        <li>Input/Output Knoten</li>
+                        <li>Effekt Knoten</li>
+                    </ul>
+		    <p>Also kann man im Browser Musik mischen (und nebenbei Bitcoins schürfen).</p>
+                </section>
+                <section data-background-image="res/web-audio-mixer.png">
+			https://github.com/jamesfiltness/web-audio-mixer
+                </section>
+                <section>
+                    <h2>The Audio Part 2</h2>
+                    Just use these arrays and play them.
+                    <pre><code class="javascript hljs" data-trim data-noescape>
+const aBuf = aCTX.createBuffer(2, 88200, audioCtx.sampleRate);
+aBuf.copyToChannel(x_path,0);
+aBuf.copyToChannel(y_path,1);
+</code></pre>
+(Maybe some normalisation, scaling)
+                </section>
+                <section data-background-image="result.png">
+                </section>
+                <section>
+                <ul>
+                <h2>Longer talk</h2>
+                
+                    <ul>
+                        <li>in german</li>
+                        <li>today 19:45 at ChaosZone Stage</li>
+                        <li>not recorded, come around!</li>
+                        <li>more background, details and outlook</li>
+                    </ul>
+		    <br>
+                    <h2>Ask me:</h2>
+                    <ul>
+                        <li>quanten at ChaosZone</li>
+                        <li>Twitter: @quintusquanten</li>
+                        <li>DECT 6626</li>
+                        <li>36C3 Wiki Project</li>
+                    </ul>
+                </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+		    width:1920,
+		    height:1080,
+                controls: false,
+                hash: true,
+                center:false,
+                transition: 'none',
+                progress: false,
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
