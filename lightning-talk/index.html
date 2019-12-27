@@ -26,7 +26,7 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    Congress Design on an Oscilloscope
+		<h2>Congress Design on an Oscilloscope</h2>
                     <img data-src="start.png">
                 </section>
                 <section>
@@ -47,7 +47,7 @@
                 <section>
                     <h2>PaperJS is our friend</h2>
                     <br>
-                    <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape data-line-numbers="2">
+                    <pre><code class="javascript hljs" data-trim data-noescape data-line-numbers="2">
 for (let offset = 0; offset < path.length; offset += delta) {
     const point = path.getLocationAt(offset).point;
     x_path.push(point.x);
@@ -70,7 +70,7 @@ for (let offset = 0; offset < path.length; offset += delta) {
                 <section>
                     <h2>The Audio Part 2</h2>
                     Just use these arrays and play them.
-                    <pre style="width: auto;"><code class="javascript hljs" data-trim data-noescape>
+                    <pre><code class="javascript hljs" data-trim data-noescape>
 const aBuf = aCTX.createBuffer(2, 88200, audioCtx.sampleRate);
 aBuf.copyToChannel(x_path,0);
 aBuf.copyToChannel(y_path,1);
@@ -78,12 +78,11 @@ aBuf.copyToChannel(y_path,1);
 (Maybe some normalisation, scaling)
                 </section>
                 <section>
-                    <h2>Result</h2>
                     <img data-src="result.png">
                 </section>
                 <section>
                 <ul>
-                <h3>Longer talk</h3>
+                <h2>Longer talk</h2>
                 
                     <ul>
                         <li>in german</li>
@@ -91,7 +90,8 @@ aBuf.copyToChannel(y_path,1);
                         <li>not recorded, come around!</li>
                         <li>more background, details and outlook</li>
                     </ul>
-                    <h3>Ask me:</h3>
+		    <br>
+                    <h2>Ask me:</h2>
                     <ul>
                         <li>quanten at ChaosZone</li>
                         <li>Twitter: @quintusquanten</li>
