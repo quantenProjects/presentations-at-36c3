@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Load the Paper.js library -->
+		<script type="text/javascript" src="paper.js"></script>
+		<!-- Define inlined JavaScript -->
+		<link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+			// Only executed our code once the DOM is ready.
+		paper.install(window);
+
+var animation_state = 0;
+var last_time = 0;
+window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			paper.setup(canvas);
+			var point_path = new Path.Circle(new Point(5,5),5);
+			point_path.fillColor = "red";
+			var path = new Path();
+			path.strokeColor = "green";
+			path.strokeWidth = 2;
+			paper.view.draw();
+			view.onFrame = function(event) {
+				const time = event.time % 4  * Math.PI ;
+				if (last_time > time) {
+					path.removeSegments();
+				}
+				last_time = time;
+				if (animation_state === 0) {
+					point_path.position = new Point(100,Math.sin(time) * 250 + 350);
+				} else if (animation_state === 1) {
+					point_path.position = new Point(100 + time*30,Math.sin(time) * 250 + 350);
+				} else if (animation_state === 2) {
+					point_path.position = new Point(Math.sin(time) * 250 + 350,100);
+				} else if (animation_state === 3) {
+					point_path.position = new Point(Math.sin(time) * 250 + 350,Math.sin(time) * 250 + 350);
+				} else if (animation_state === 4) {
+					point_path.position = new Point(Math.sin(time) * 250 + 350,Math.sin(time + Math.PI/2) * 250 + 350);
+				}
+				if (path.segments.length > 30) {
+					path.removeSegment(0);
+				}
+				path.add(point_path.position);
+			}
+		}
+	</script>
+	</head>
+	<body>
+			<canvas id="myCanvas" resize></canvas>
+	</body>
+
+	<script type="text/javascript">
+document.body.onkeyup = function(e){
+	    if(e.keyCode == 32){
+		    animation_state += 1;
+		    if (animation_state > 4) {
+			    animation_state = 0;
+		        }
+		    last_time = 100;
+}
+}
+	</script>
+</html>
