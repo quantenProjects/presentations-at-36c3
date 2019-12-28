@@ -91,36 +91,76 @@ for (let offset = 0; offset < path.length;
 			https://github.com/jamesfiltness/web-audio-mixer
                 </section>
                 <section>
-                    <h2>The Audio Part 2</h2>
-                    Just use these arrays and play them.
-                    <pre><code class="javascript hljs" data-trim data-noescape>
+                    <h2>Wie bekommt man die Pfade aus dem Rechner?</h2>
+                    Einfach die beiden Arrays reinkippen und auf Stereo kommts raus.
+                    <pre style="font-size:130%"><code class="javascript hljs" data-trim data-noescape>
 const aBuf = aCTX.createBuffer(2, 88200, audioCtx.sampleRate);
 aBuf.copyToChannel(x_path,0);
 aBuf.copyToChannel(y_path,1);
 </code></pre>
-(Maybe some normalisation, scaling)
-                </section>
-                <section data-background-image="result.png">
+Und noch ein bisschen Normalisierung und Skalierung
                 </section>
                 <section>
-                <ul>
-                <h2>Longer talk</h2>
-                
-                    <ul>
-                        <li>in german</li>
-                        <li>today 19:45 at ChaosZone Stage</li>
-                        <li>not recorded, come around!</li>
-                        <li>more background, details and outlook</li>
-                    </ul>
-		    <br>
-                    <h2>Ask me:</h2>
+			<p>Einfach Tastköpfe an linken und rechten Kanal hängen.</p>
+			<p>Premium Version (nicht n&ouml;tig): USB Soundkarte mit Verst&auml;rker und BNC</p>
+			<img data-src="res/amp.jpg">
+                </section>
+		<section>
+			<h2>Warum Analog?</h2>
+			<img width="1500" data-src="res/dos.png">
+		</section>
+		<section>
+			<section>
+				<h2>Prior Art</h2>
+				<ul>
+					<li>Oscilloscope Music</li>
+					<ul>
+						<li>Audiovisuelle Kunst</li>
+						<li>Youtube Videos</li>
+						<li>Soundfiles</li>
+						<li>Smarter Every Day Video</li>
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<img data-src="res/music1.gif" width="1500">
+				<br>
+				<small>https://oscilloscopemusic.com/</small>
+			</section>
+			<section>
+				<img data-src="res/music2.gif" width="1500">
+				<br>
+				<small>https://oscilloscopemusic.com/</small>
+			</section>
+			<section>
+				<img data-src="res/aster.jpg" width="1300">
+				<br>
+				<small>https://www.youtube.com/watch?v=TDiPibnHgW4</small>
+			</section>
+			<section>
+				<img data-src="res/quake.jpg" width="1500">
+				<br>
+				<small>https://www.extremetech.com/wp-content/uploads/2014/12/Quake-Oscilloscope-640x353.jpg</small>
+			</section>
+			<section>
+				<img data-src="res/clock.jpg" width="1500">
+				<br>
+				<small>https://www.kickstarter.com/projects/1474770115/the-oscilloscope-clock</small>
+			</section>
+		</section>
+
+                <section data-background-image="res/result.png">
+                </section>
+                <section data-background-image="res/phosphor.png">
+                <h2>Zur&uuml;ck in 2019</h2>
                     <ul>
                         <li>quanten at ChaosZone</li>
                         <li>Twitter: @quintusquanten</li>
                         <li>DECT 6626</li>
                         <li>36C3 Wiki Project</li>
+			<li>https://github.com/quantenProjects/36c3-generator</li>
+			<li>https://github.com/quantenProjects/presentations-at-36c3</li>
                     </ul>
-                </ul>
                 </section>
             </div>
         </div>
